@@ -2,7 +2,7 @@
   <div class="card-block">
     <div class="card-title">{{title}}</div>
     <div class="card-text" *ngIf="hidePreview; else xmlPreview">
-      Code preview is hidden because the text is too large.
+      Code is hidden because the text is too large.
       <button class="btn btn-sm btn-warning-outline" (click)="showPreview()">
         <clr-icon shape="eye"></clr-icon>
         Show anyway
@@ -12,6 +12,14 @@
       <pre class="resizable"><code clr-code-highlight="language-xml" appCodeHighlightAutoredraw
                                    [textContent]="xml"></code></pre>
     </ng-template>
+    <clr-stack-view>
+      <clr-stack-block [(clrSbExpanded)]="imagePreviewExpanded">
+        <clr-stack-label>Preview</clr-stack-label>
+        <clr-stack-block>
+          <app-preview #imagePreview></app-preview>
+        </clr-stack-block>
+      </clr-stack-block>
+    </clr-stack-view>
   </div>
   <div class="card-footer">
     <div class="flex">

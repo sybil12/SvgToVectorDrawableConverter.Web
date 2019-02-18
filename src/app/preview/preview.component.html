@@ -1,0 +1,23 @@
+<div class="root">
+  <div *ngIf="state === stateEnum.Http">
+    Since the web browser enforces the <a href="https://en.wikipedia.org/wiki/Same-origin_policy">same-origin policy</a>,
+    a preview can only be requested from a page loaded via HTTP.
+    <button class="btn btn-sm" (click)="switchToHttp()">
+      <clr-icon shape="refresh"></clr-icon>
+      Switch to HTTP
+    </button>
+  </div>
+  <div *ngIf="state === stateEnum.Loading">
+    <span class="spinner spinner-md"></span>
+  </div>
+  <div *ngIf="state === stateEnum.Ok">
+    <img class="image" [src]="src">
+  </div>
+  <div *ngIf="state === stateEnum.Error">
+    {{errorMessage}}
+    <button class="btn btn-sm" (click)="retry()">
+      <clr-icon shape="repeat"></clr-icon>
+      Retry
+    </button>
+  </div>
+</div>

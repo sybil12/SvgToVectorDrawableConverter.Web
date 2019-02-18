@@ -1,0 +1,17 @@
+.root {
+  margin-left: -70%;
+  width: 170%;
+  padding-left: 0.25rem;
+}
+
+.spinner {
+  margin-top: 0.5rem;
+  margin-bottom: 0.15rem;
+}
+
+.image {
+  margin: 0.5rem 0.25rem;
+  max-width: 99%;
+  background: #f5f5f5 url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="2" height="2" opacity=".1"><rect x="1" width="1" height="1" /><rect y="1" width="1" height="1" /></svg>');
+  background-size: 30px 30px;
+}
