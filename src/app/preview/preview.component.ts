@@ -11,6 +11,7 @@ export class PreviewComponent implements OnDestroy {
   state: State;
   readonly stateEnum = State;
 
+  scale = 1;
   src: SafeUrl;
   errorMessage: string;
 
@@ -31,7 +32,7 @@ export class PreviewComponent implements OnDestroy {
     }
 
     this.state = State.Loading;
-    this._httpClient.post('http://193.124.64.166/preview', xml, { responseType: 'blob' })
+    this._httpClient.post('http://193.124.64.166/preview?' + this.scale, xml, { responseType: 'blob' })
       .subscribe(
         x => {
           if (this._url) {
@@ -58,6 +59,11 @@ export class PreviewComponent implements OnDestroy {
   }
 
   public retry () {
+    this.load(this._xml);
+  }
+
+  public reload (scale: number) {
+    this.scale = scale;
     this.load(this._xml);
   }
 }
