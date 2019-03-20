@@ -26,13 +26,8 @@ export class PreviewComponent implements OnDestroy {
   public load (xml: string) {
     this._xml = xml;
 
-    if (location.protocol.toLowerCase() !== 'http:') {
-      this.state = State.Http;
-      return;
-    }
-
     this.state = State.Loading;
-    this._httpClient.post('http://193.124.64.166/preview?' + this.scale, xml, { responseType: 'blob' })
+    this._httpClient.post('https://svg2vector.com/preview?' + this.scale, xml, { responseType: 'blob' })
       .subscribe(
         x => {
           if (this._url) {
@@ -54,10 +49,6 @@ export class PreviewComponent implements OnDestroy {
     }
   }
 
-  public switchToHttp () {
-    location.href = 'http:' + location.href.substring(location.protocol.length);
-  }
-
   public retry () {
     this.load(this._xml);
   }
@@ -69,7 +60,6 @@ export class PreviewComponent implements OnDestroy {
 }
 
 enum State {
-  Http,
   Loading,
   Ok,
   Error
